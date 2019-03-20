@@ -35,6 +35,7 @@ public class InitialDataLoader implements CommandLineRunner {
         library.setAddress(libraryAddress);
         doInsert(library);
         doUpdate(library);
+        library = doFetch(library);
         doDelete(library);
     }
 
@@ -48,6 +49,11 @@ public class InitialDataLoader implements CommandLineRunner {
         library.setLibraryName("library name changed");
         em.merge(library);
         em.flush();
+    }
+    private Library doFetch(Library library){
+        logger.info("do fetch");
+        em.detach(library);
+        return em.find(Library.class, library.getId());
     }
     private void doDelete(Library library){
         logger.info("do delete");
