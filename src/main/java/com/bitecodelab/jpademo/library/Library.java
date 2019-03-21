@@ -18,9 +18,17 @@ public class Library {
 
     @OneToMany(
             cascade = CascadeType.ALL,
+            mappedBy = "library",
             orphanRemoval = true
     )
-    @JoinColumn(name = "book_id")
     private List<Book> books = new ArrayList<>();
 
+    public void addBook(Book book){
+        this.books.add(book);
+        book.setLibrary(this);
+    }
+    public void removeBook(Book book){
+        this.books.remove(book);
+        book.setLibrary(null);
+    }
 }

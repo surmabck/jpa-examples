@@ -26,9 +26,9 @@ public class InitialDataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Library library = new Library();
         library.setLibraryName("library1");
-        library.getBooks().add(Book.of("Book1"));
-        library.getBooks().add(Book.of("Book2"));
-        library.getBooks().add(Book.of("Book3"));
+        library.addBook(Book.of("Book1"));
+        library.addBook(Book.of("Book2"));
+        library.addBook(Book.of("Book3"));
         doInsert(library);
         doUpdate(library);
         library = doFetch(library);
