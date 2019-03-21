@@ -13,6 +13,6 @@ public class Library {
     @GeneratedValue
     private Long id;
     private String libraryName;
-    @OneToOne(cascade = CascadeType.PERSIST, mappedBy = "library")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "library", fetch = FetchType.LAZY)
     private LibraryAddress address;
 }
