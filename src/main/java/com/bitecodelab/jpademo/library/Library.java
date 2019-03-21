@@ -20,6 +20,7 @@ public class Library {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
+    @JoinColumn(name = "book_id")
     private List<Book> books = new ArrayList<>();
 
 }
