@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Setter
 public class LibraryAddress {
     @Id
-    @GeneratedValue
     private Long id;
 
     @Column(name = "houseNumber", nullable = false)
@@ -29,6 +28,6 @@ public class LibraryAddress {
     private String zipCode;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "library_id")
+    @MapsId
     private Library library;
 }
