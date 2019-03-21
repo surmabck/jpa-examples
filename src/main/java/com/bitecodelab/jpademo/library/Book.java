@@ -3,6 +3,8 @@ package com.bitecodelab.jpademo.library;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -20,7 +22,6 @@ public class Book {
     @EqualsAndHashCode.Include
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "library_id")
-    private Library library;
+    @ManyToMany(mappedBy = "books")
+    private List<Library> libraries = new ArrayList<>();
 }

@@ -16,19 +16,22 @@ public class Library {
     private Long id;
     private String libraryName;
 
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            mappedBy = "library",
-            orphanRemoval = true
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "library_books",
+            joinColumns = @JoinColumn(name = "library_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id")
     )
     private List<Book> books = new ArrayList<>();
 
     public void addBook(Book book){
         this.books.add(book);
-        book.setLibrary(this);
+        book.getLibraries().add(this);
     }
     public void removeBook(Book book){
         this.books.remove(book);
-        book.setLibrary(null);
+        book.getLibraries().remove(this);
     }
 }
