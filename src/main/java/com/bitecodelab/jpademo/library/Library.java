@@ -9,13 +9,13 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
+@Entity (name = "LibEntity")
 @Getter
 @Setter
 @ToString
-@Table(name = "Lib")
+@Table(name = "Library_table")
 @NamedQuery(name = "Library.findCustomByBook",query = "SELECT b.libraries FROM Book b WHERE b.name = :bookName")
-@NamedQueries( value = {@NamedQuery(name = "Library.findCustomByName",query = "SELECT library FROM Library library WHERE library.libraryName= ?1")})
+@NamedQueries( value = {@NamedQuery(name = "Library.findCustomByName",query = "SELECT library FROM LibEntity library WHERE library.libraryName= ?1")})
 public class Library {
     @Id
     @GeneratedValue
