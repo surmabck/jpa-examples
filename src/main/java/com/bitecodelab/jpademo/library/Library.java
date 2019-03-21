@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -13,11 +15,11 @@ public class Library {
     @GeneratedValue
     private Long id;
     private String libraryName;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "library", fetch = FetchType.LAZY, optional = false)
-    private LibraryAddress address;
 
-    public void setAddress(LibraryAddress address){
-        this.address = address;
-        address.setLibrary(this);
-    }
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Book> books = new ArrayList<>();
+
 }
