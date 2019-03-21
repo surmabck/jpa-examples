@@ -54,8 +54,8 @@ public class InitialDataLoader implements CommandLineRunner {
     @Transactional
     private void doDelete(Library library){
         logger.info("do delete");
-        Book book = library.getBooks().get(0);
-        library.removeBook(book);
+        Book book1 = em.find(Book.class, "Book1");
+        library.removeBook(book1);
         em.flush();
     }
 }

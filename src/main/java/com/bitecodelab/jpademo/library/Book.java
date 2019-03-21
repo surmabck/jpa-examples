@@ -1,10 +1,14 @@
 package com.bitecodelab.jpademo.library;
 
 import lombok.*;
+import org.hibernate.annotations.NaturalId;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -15,13 +19,11 @@ import java.util.List;
 public class Book {
 
     @Id
-    @GeneratedValue
-    private long id;
-
-    @NonNull
+    @NaturalId
     @EqualsAndHashCode.Include
+    @NonNull
     private String name;
 
     @ManyToMany(mappedBy = "books")
-    private List<Library> libraries = new ArrayList<>();
+    private Set<Library> libraries = new HashSet<>();
 }

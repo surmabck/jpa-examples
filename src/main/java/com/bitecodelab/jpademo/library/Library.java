@@ -5,7 +5,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -24,7 +26,7 @@ public class Library {
             joinColumns = @JoinColumn(name = "library_id"),
             inverseJoinColumns = @JoinColumn(name = "book_id")
     )
-    private List<Book> books = new ArrayList<>();
+    private Set<Book> books = new HashSet<>();
 
     public void addBook(Book book){
         this.books.add(book);
