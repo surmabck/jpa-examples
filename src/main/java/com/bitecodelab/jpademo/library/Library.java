@@ -14,7 +14,6 @@ import java.util.Set;
 @Setter
 @ToString
 @Table(name = "Lib")
-@NamedQuery(name = "Library.findCustomByBook",query = "SELECT b.libraries FROM Book b WHERE b.name = :bookName")
 @NamedQueries( value = {@NamedQuery(name = "Library.findCustomByName",query = "SELECT library FROM Library library WHERE library.libraryName= ?1")})
 public class Library {
     @Id
