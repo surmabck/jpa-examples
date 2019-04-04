@@ -51,7 +51,7 @@ public class InitialDataLoader implements CommandLineRunner {
         log.info("Books in library: {} : {}",library.getLibraryName(),bookRepository.findByLibraries(library));
         log.info("Books in library: {} : {}",library2.getLibraryName(),bookRepository.findByLibraries(library2));
         log.info("Book {} is available in libraries: {}",book1.getName(),libraryRepository.findLibrariesWhichHaveGivenBook(book1.getName()));
-        log.info("Book {} is available in libraries: {}",book22.getName(),libraryRepository.findCustomByBook(book22.getName()));
+        log.info("Library for id {} : {}",library.getId(),libraryRepository.findCustomById(library.getId()));
 
     }
     private void doInsert(Library library){

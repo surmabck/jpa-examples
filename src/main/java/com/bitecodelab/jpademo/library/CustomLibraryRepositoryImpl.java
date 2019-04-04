@@ -23,9 +23,9 @@ public class CustomLibraryRepositoryImpl implements CustomLibraryRepository {
     }
 
     @Override
-    public List<Library> findCustomByBook(String name) {
-        TypedQuery<Library> query = entityManager.createQuery("SELECT l FROM Library l JOIN l.books b WHERE b.name = :bookName", Library.class);
-        query.setParameter("bookName",name);
+    public List<Library> findCustomById(long id) {
+        TypedQuery<Library> query = entityManager.createQuery("SELECT l FROM Library l WHERE l.id = :id", Library.class);
+        query.setParameter("id",id);
         List<Library> resultList = query.getResultList();
         return resultList;
     }
